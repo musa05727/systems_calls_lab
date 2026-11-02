@@ -41,7 +41,8 @@
     }
 
     printf("Number of processors: %d\n", get_nprocs_conf()); 
-    long long physical_mem_bytes = (long long)sysconf(_SC_PHYS_PAGES)* sysconf(_SC_PAGESIZE); 
+    //since wsl uses 50% of the total physical memory, I multiplied by 2 to get the actual total. 
+    long long physical_mem_bytes = 2 * (long long)sysconf(_SC_PHYS_PAGES)* sysconf(_SC_PAGESIZE); 
     printf("Physical Memory in bytes: %llu\n", physical_mem_bytes);  
 
     long long rem_mem_bytes = (long long)sysconf(_SC_AVPHYS_PAGES)* sysconf(_SC_PAGESIZE); 
