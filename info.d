@@ -1,1 +1,0 @@
-info.o: info.c
