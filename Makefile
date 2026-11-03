@@ -1,5 +1,6 @@
 CC=gcc
-CFLAGS=-c -Wall
+# Added -MMD to automatically generate correct .d files during compilation
+CFLAGS=-c -Wall -MMD
 SOURCES= info.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=info
@@ -12,9 +13,9 @@ all: $(SOURCES) $(EXECUTABLE)
 $(EXECUTABLE):$(OBJECTS)
 	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
 
-.c.o: 
-	$(CC) $(CFLAGS) $< -o$@
-	$(CC) -MM $< > $*.d
+# Simplified pattern rule (using standard % approach)
+%.o: %.c
+		$(CC) $(CFLAGS) $< -o $@
 
 clean: 
-	rm -rf $(OBJECTS) $(EXECUTABLE) *.d
+		rm -rf $(OBJECTS) $(EXECUTABLE) *.d

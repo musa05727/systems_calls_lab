@@ -27,13 +27,13 @@
     if(uname(&info) == 0){
         //Network name
         printf("Network name: %s\n", info.nodename); 
-        //system name 
+        //System name 
         printf("System Name: %s\n", info.sysname); 
-        //os release
+        //Os release
         printf("Release: %s\n", info.release);
-        //os version
+        //Os version
         printf("Version: %s\n", info.version);
-        //os hardware type
+        //hardware type
         printf("Hardware Type: %s\n", info.machine);
     }else{
         printf("error when calling uname function\n"); 
@@ -46,6 +46,6 @@
     printf("Physical Memory in bytes: %llu\n", physical_mem_bytes);  
 
     long long rem_mem_bytes = (long long)sysconf(_SC_AVPHYS_PAGES)* sysconf(_SC_PAGESIZE); 
-    printf("Remaining Memory in bytes: %llu\n", rem_mem_bytes);  
+    printf("Remaining Memory in bytes: %llu\n", rem_mem_bytes);
     return 0;
  }
