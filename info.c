@@ -1,7 +1,9 @@
 /*******
  * Filename: info.c 
  * Author: Musa Abdul Hamid
- * Date: 10/29/26
+ * Lab 9
+ * Section 111
+ * Date: 11/3/26
  ******/
 
  #include <stdio.h>
