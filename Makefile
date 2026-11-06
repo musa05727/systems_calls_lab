@@ -1,21 +1,17 @@
+
 CC=gcc
-# Added -MMD to automatically generate correct .d files during compilation
-CFLAGS=-c -Wall -MMD
-SOURCES= info.c
-OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=info
+CFLAGS=-Wall -MMD
 
-all: $(SOURCES) $(EXECUTABLE)
+SOURCES=info.c pmod.c finfo.c pinfo.c
+EXECUTABLES=$(SOURCES:.c=)
 
-# pull in dependency info for *existing* .o files
--include $(OBJECTS:.o=.d)
+all: $(EXECUTABLES)
 
-$(EXECUTABLE):$(OBJECTS)
-	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+%: %.c
+	$(CC) $(CFLAGS) $< -o $@
 
-# Simplified pattern rule (using standard % approach)
-%.o: %.c
-		$(CC) $(CFLAGS) $< -o $@
+clean:
+	rm -f $(EXECUTABLES) *.d *.o
 
-clean: 
-		rm -rf $(OBJECTS) $(EXECUTABLE) *.d
+
+
