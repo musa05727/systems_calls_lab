@@ -1,9 +1,9 @@
 /*******
- * Filename: info.c 
+ * Filename: pinfo.c 
  * Author: Musa Abdul Hamid
  * Lab 9
  * Section 111
- * Last Updated: 11/3/26
+ * Last Updated: 11/6/26
  ******/
 #define _GNU_SOURCE
 #include <stdio.h>

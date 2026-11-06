@@ -1,3 +1,10 @@
+/*******
+ * Filename: finfo.c 
+ * Author: Musa Abdul Hamid
+ * Lab 9
+ * Section 111
+ * Date: 11/6/26
+ ******/
 #include <stdio.h>
 #include <sys/stat.h>
 #include <stdlib.h>
