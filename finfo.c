@@ -14,14 +14,14 @@ int main(int argc, char* argv[]){
 
     if(argc > 1){
         struct stat file_info; 
-
+        // stat() retrieves information about a file, including its type, permissions, owner, size, and modification time.
         if(stat(argv[1], &file_info) == -1){
-            printf("File not found\n"); 
+            perror("stat failed");
             exit(EXIT_FAILURE); 
         }
 
         printf("File type: ");
-
+        // st_mode contains the file type and permission bits.
         switch (file_info.st_mode & S_IFMT) {
             case S_IFBLK:  printf("block device\n");            break;
             case S_IFCHR:  printf("character device\n");        break;
@@ -47,9 +47,11 @@ int main(int argc, char* argv[]){
         printf("%c", (file_info.st_mode & S_IXOTH) ? 'x' : '-');
 
         printf("\n"); 
-
+        // st_uid stores the user ID of the file's owner.
         printf("Owner: %lu\n", (unsigned long)file_info.st_uid); 
+        // st_size stores the file size in bytes.
         printf("File size: %lu bytes\n",(unsigned long) file_info.st_size);
+        // ctime() converts the file's last modification time into a readable date and time.
         printf("Last file modification: %s", ctime(&file_info.st_mtime)); 
     }else{
         printf("Must specify a file via command line\n"); 

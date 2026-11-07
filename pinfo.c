@@ -22,6 +22,7 @@ int main(int argc, char* argv[]){
     if(argc > 1){
         id = atoi(argv[1]); 
         errno = 0; 
+        // getpriority() retrieves the nice value of the specified process.
         priority = getpriority(PRIO_PROCESS, id); 
         if(priority == -1 && errno != 0){
             perror("getpriority failed"); 
@@ -29,6 +30,7 @@ int main(int argc, char* argv[]){
         }
         printf("Current executing process: %d\n", id); 
         printf("Priority:%d\n", priority);
+        // sched_getscheduler() retrieves the scheduling policy of the specified process.
         int policy = sched_getscheduler(id); 
         if(policy == -1){
             perror("sched_getscheduler failed");
@@ -38,15 +40,18 @@ int main(int argc, char* argv[]){
         printf("Scheduler: %s\n", scheduler);   
 
     }else{
+        // getpid() returns the process ID of the currently executing process.
         id = getpid(); 
         printf("Current executing process: %d\n", id);
         errno = 0;  
+        // getpriority() retrieves the nice value of the specified process.
         priority = getpriority(PRIO_PROCESS, 0);
         if(priority == -1 && errno != 0){
             perror("getpriority failed");
             exit(EXIT_FAILURE);
         } 
         printf("Priority:%d\n", priority);
+        // sched_getscheduler() retrieves the scheduling policy of the specified process.
         int policy = sched_getscheduler(id); 
         if(policy == -1){
             perror("sched_getscheduler failed");

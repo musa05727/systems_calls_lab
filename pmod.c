@@ -18,9 +18,10 @@ int main(int argc, char* argv[]){
     ts.tv_sec = 1; 
 
     //total time(ns) -> 1837272638ns
-     
+    // nice() increases the process's nice value by 10, reducing its scheduling priority.
     int reduced_priority = nice(10); 
-    printf("Priority: %d\n", reduced_priority);  
+    printf("Priority: %d\n", reduced_priority);
+    // nanosleep() suspends the process for the duration specified in the timespec structure.  
     nanosleep(&ts, NULL);
     printf("Goodbye!\n"); 
     exit(EXIT_SUCCESS); 
